@@ -1,7 +1,6 @@
 package level4;
 
 class Player {
-
     String[] ownCards = new String[5];
 
     // 记录玩家牌的值对应的数值
