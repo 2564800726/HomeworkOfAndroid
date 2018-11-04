@@ -92,8 +92,8 @@ class JudgeCardsType {
 
     // 判断是否是炸弹
     private void isBomb(Player player) {
+        int count = 0;
         for (int i = 0; i < 2; i++) {
-            int count = 0;
             for (int value : values) {
                 if (values[i] == value) {
                     count++;
