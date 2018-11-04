@@ -2,6 +2,7 @@ package level4;
 import java.util.Random;
 
 class Poker {
+
     // spades(黑桃),hearts(红桃),clubs(梅花),diamonds(方块)
     private static String[] pokerColor = {"黑桃", "红桃", "梅花", "方块"};
     private static int[] pokerValue = {65, 2, 3, 4, 5, 6, 7, 8, 9, 10, 74, 81, 75};
