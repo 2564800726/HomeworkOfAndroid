@@ -1,16 +1,20 @@
 package level4;
 import java.util.Random;
 
-class Poker {
+public class Poker {
 
     // spades(黑桃),hearts(红桃),clubs(梅花),diamonds(方块)
-    private static String[] pokerColor = {"黑桃", "红桃", "梅花", "方块"};
-    private static int[] pokerValue = {65, 2, 3, 4, 5, 6, 7, 8, 9, 10, 74, 81, 75};
-    private static String[] joker = {"REDJOKER", "BLACKJOKER"};
-    private static String[] poker = new String[54];
+    private String[] pokerColor = {"黑桃", "红桃", "梅花", "方块"};
+    private int[] pokerValue = {65, 2, 3, 4, 5, 6, 7, 8, 9, 10, 74, 81, 75};
+    private String[] joker = {"REDJOKER", "BLACKJOKER"};
+    private String[] poker = new String[54];
 
+    public Poker() {
+        getPoker();
+        System.out.println("洗牌完毕！");
+    }
     // 得到一副全新的扑克牌
-    static void getPoker() {
+    private void getPoker() {
         for (int i = 0; i < pokerColor.length; i++) {
             for (int j = 0; j < pokerValue.length; j++) {
                 if (pokerValue[j] < 11) {
@@ -24,7 +28,7 @@ class Poker {
         }
     }
     // 随机抽取一张扑克牌，并从扑克牌中剔除这张牌
-    static String getRandomCard() {
+    public String getRandomCard() {
         Random rand = new Random();
         String randomCard = null;
         do {

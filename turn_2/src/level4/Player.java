@@ -1,7 +1,7 @@
 package level4;
 
-class Player {
-    String[] ownCards = new String[5];
+public class Player {
+    private String[] ownCards = new String[5];
 
     // 记录玩家牌的值对应的数值
     private int[] values = new int[5];
@@ -23,17 +23,23 @@ class Player {
     private int total = 0;
 
     public Player(String name) {
-        getCards();
         this.name = name;
     }
     // 抽取5张牌
-    private void getCards() {
+    public void getCards(Poker poker) {
         for (int i = 0; i < ownCards.length; i++) {
-            ownCards[i] = Poker.getRandomCard();
+            ownCards[i] = poker.getRandomCard();
         }
+        System.out.println(this.name + "抽牌···");
     }
+
+    // 获取玩家的所有牌
+    String[] getOwnCards() {
+        return ownCards;
+    }
+
     // 展示该玩家的所有牌
-    void showAllCards() {
+    public void showAllCards() {
         for (int i = 0; i < ownCards.length; i++) {
             System.out.println(ownCards[i]);
         }
@@ -88,12 +94,12 @@ class Player {
         this.total = total;
     }
 
-    // 玩家的牌的值得数值得Getter和Setter
-    public int[] getValues() {
+    // 玩家的牌的值得数值的Getter和Setter
+    int[] getValues() {
         return values;
     }
 
-    public void setValues(int[] values) {
+    void setValues(int[] values) {
         this.values = values;
     }
 }

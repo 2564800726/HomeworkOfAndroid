@@ -1,22 +1,23 @@
 package level4;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Homework {
     public static void main(String[] args) {
-        // 一副全新的扑克
-        Poker.getPoker();
-
-//         生成4名玩家
-        Player player1 = new Player("Player1");
-        Player player2 = new Player("Player2");
-        Player player3 = new Player("Player3");
-        Player player4 = new Player("Player4");
-
-        // 分别判断四名玩家的牌型
-        new JudgeCardsType(player1, player2, player3, player4);
-
-        // 比较四名玩家的牌型
-        new Compare(player1, player2, player3, player4);
-
-
+        ArrayList<Player> players = new ArrayList<>();
+        System.out.println("输入玩家昵称，至少两名玩家，最多十名玩家（player1,player2,player3···）");
+        Scanner scan = new Scanner(System.in);
+        String allNames = scan.next();
+        for (int i = 0; i < allNames.split(",").length; i++) {
+            players.add(new Player(allNames.split(",")[i]));
+        }
+        Poker poker = new Poker();
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).getCards(poker);
+        }
+        System.out.println("================================");
+        JudgeCardsType.judgeCardsType(players);
+        Compare.comparePlayers(players);
     }
 }

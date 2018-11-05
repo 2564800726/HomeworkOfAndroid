@@ -1,14 +1,16 @@
 package level4;
 
-class JudgeCardsType {
+import java.util.ArrayList;
+
+public class JudgeCardsType {
     // 记录下所有的玩家
-    private Player[] allPlayers;
+    private static ArrayList<Player> allPlayers;
     // 用于记录玩家的牌的值
-    private int[] values = new int[5];
+    private static int[] values = new int[5];
     // 用于记录玩家的牌的花色
     private static String[] colors = new String[5];
 
-    public JudgeCardsType(Player ...players) {
+    public static void judgeCardsType(ArrayList<Player> players) {
         allPlayers = players;
         for (Player allPlayer : allPlayers) {
             getValue(allPlayer);
@@ -20,16 +22,16 @@ class JudgeCardsType {
     }
 
     // 设置玩家牌的值对应的数值
-    private void setDigitValues(Player player) {
+    private static void setDigitValues(Player player) {
         for (int i = 0; i < values.length; i++) {
             player.getValues()[i] = toInteger(values[i]);
         }
     }
 
     // 记录下玩家的牌的值
-    private void getValue(Player player) {
-        for (int i = 0; i < player.ownCards.length; i++) {
-            switch (player.ownCards[i].split("-")[1]) {
+    private static void getValue(Player player) {
+        for (int i = 0; i < player.getOwnCards().length; i++) {
+            switch (player.getOwnCards()[i].split("-")[1]) {
                 case "J":
                     values[i] = 74;
                     break;
@@ -43,21 +45,21 @@ class JudgeCardsType {
                     values[i] = 65;
                     break;
                 default:
-                    values[i] = Integer.parseInt(player.ownCards[i].split("-")[1]);
+                    values[i] = Integer.parseInt(player.getOwnCards()[i].split("-")[1]);
                     break;
             }
         }
     }
 
     // 记录下玩家的牌的花色
-    private void getColor(Player player) {
-        for (int i = 0; i < player.ownCards.length; i++) {
-            colors[i] = player.ownCards[i].split("-")[0];
+    private static void getColor(Player player) {
+        for (int i = 0; i < player.getOwnCards().length; i++) {
+            colors[i] = player.getOwnCards()[i].split("-")[0];
         }
     }
 
     // 记录下玩家最大的单张
-    private void maxCard(Player player) {
+    private static void maxCard(Player player) {
         int index = 0;
         int colorStep = 0;
         for (int i = 1; i < values.length; i++) {
@@ -82,7 +84,7 @@ class JudgeCardsType {
         player.setMaxCard(colorStep + "-" + values[index]);
     }
     // 判断每位玩家的牌型
-    private void judgeAllTypes(Player player) {
+    private static void judgeAllTypes(Player player) {
             isBomb(player);
             isFiveFlowers(player);
             isFiveSmall(player);
@@ -91,7 +93,7 @@ class JudgeCardsType {
     }
 
     // 判断是否是炸弹
-    private void isBomb(Player player) {
+    private static void isBomb(Player player) {
         int count = 0;
         for (int i = 0; i < 2; i++) {
             for (int value : values) {
@@ -109,7 +111,7 @@ class JudgeCardsType {
     }
 
     // 判断是否是五小
-    private void isFiveSmall(Player player) {
+    private static void isFiveSmall(Player player) {
         int count = 0;
         int sum = 0;
         for (int value : values) {
@@ -125,7 +127,7 @@ class JudgeCardsType {
     }
 
     //判断是否是五花
-    private void isFiveFlowers(Player player) {
+    private static void isFiveFlowers(Player player) {
         int count = 0;
         for (int value : values) {
             if (value > 10) {
@@ -138,7 +140,7 @@ class JudgeCardsType {
     }
 
     // 判断是否是四花
-    private void isFourFlowers(Player player) {
+    private static void isFourFlowers(Player player) {
         int count1 = 0;
         int count2 = 0;
         for (int value : values) {
@@ -155,7 +157,7 @@ class JudgeCardsType {
     }
 
     // 判断是否是牛牛，有牛，无牛
-    private void whichCows(Player player) {
+    private static void whichCows(Player player) {
         for (int x = 0; x < values.length; x++) {
             for (int y = 0; y < values.length; y++) {
                 for (int z = 0; z < values.length; z++) {
