@@ -2,7 +2,6 @@ package level4;
 
 import level4.player.*;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -177,25 +176,8 @@ public class PlayGame {
                 highestPeople = 0;
             }
         }
-
-//        for (int i = 0; i < this.peoples.size(); i++) {
-//            System.out.print(this.peoples.get(i) + "  ");
-//        }
-//        System.out.println();
-//
-//        System.out.println(lowest + " " + highest);
-
         findLowestPlayers(lowest);
         findHighestPlayers(highest);
-
-//        for (int i = 0; i < 25; i++) {
-//            System.out.print(this.players[i].getScore() + "," + i + " ");
-//        }
-//        System.out.println();
-//        for (int i = 0; i < 5; i++) {
-//            System.out.print(this.lowestPlayersIndex[i] + "," + this.highestPlayersIndex[i] + " ");
-//        }
-//        System.out.println();
         clonePlayers();
     }
 
