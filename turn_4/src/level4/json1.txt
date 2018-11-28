@@ -1,0 +1,23 @@
+{
+    "status": 200,
+    "message": "成功",
+    "data": [{
+        "name": "里脊",
+        "name_en": "Jay68",
+        "age": 18,
+        "sex": "女",
+        "nb": ["高中学Android","有女朋友"]
+    }, {
+        "name": "郑胖胖",
+        "name_en": "acemurder",
+        "age": 19,
+        "sex": "女",
+        "nb": ["刷新宣传语","Offer收割机"]
+    }, {
+        "name": "朱大",
+        "name_en": "Jude95",
+        "age": 20,
+        "sex": "女",
+        "nb": ["上千Star的项目，有两个，接近三个","创业"]
+    }]
+}
